@@ -1,0 +1,82 @@
+<template>
+
+
+    <lightning-card style="margin:15px; text-transform:capitalize;" class="slds-card__header ">
+
+        <lightning-layout>
+
+
+            <lightning-layout-item size="6" class="slds-float_left slds-p-around_medium">
+
+
+
+                <lightning-icon icon-name="standard:record" alternative-text="Clone" title="View Academic Year">
+                </lightning-icon>
+
+                <span style="font-weight: bold; font-size: larger;  " class=" slds-p-around_small ">View Academic
+                    Year</span>
+
+            </lightning-layout-item>
+
+
+
+            <lightning-layout-item size="6" class="slds-float_right">
+
+
+
+                <c-academic-year class="slds-float_right slds-p-around_medium">
+                </c-academic-year>
+
+
+                <!-- nagaratna -->
+
+
+            </lightning-layout-item>
+        </lightning-layout>
+        <!-- <div class="slds-clearfix">
+                <lightning-button class="slds-var-m-left_xx-small slds-float_left" variant="Neutral"
+                    label="Selected Records" title="Selected Records" slot="actions" icon-name="utility:check">
+                </lightning-button>
+            </div> -->
+
+
+        <template if:true={isModalOpen}>
+
+            <!-- Modal/Popup Box LWC starts here -->
+
+
+            <c-edit-academic-year record-id={recordId} is-show-modal={isModalOpen} onmodalchange={handleModalChange}>
+            </c-edit-academic-year>
+
+            <!-- <div class="slds-backdrop slds-backdrop_open"></div> -->
+
+        </template>
+
+
+<template if:true={isDelete}>
+    <c-delete-confirmation records-id={DelId} obj-name="Academic_Year__c" onmodalchange={closemodaldelete} ></c-delete-confirmation>
+</template>
+
+
+        <div style="height: auto;">
+            <template if:true={dataList}>
+                <lightning-datatable key-field="Id" data={dataList} columns={columns} onrowaction={rowActionHandler}
+                    suppress-bottom-bar>
+                </lightning-datatable>
+            </template>
+        </div>
+        <div slot="footer" class="slds-clearfix slds-p-top_xxx-small ">
+            
+                <lightning-button variant="brand" label="Back" title="Back" 
+                class="slds-var-m-left_xx-small slds-float_left" 
+                 onclick={navigateToTabPage}></lightning-button>
+             
+            <lightning-button label="Delete" onclick={getSelectedRec} variant="brand"
+                class="slds-var-m-left_xx-small slds-float_right"></lightning-button>
+            <!-- <lightning-button icon-name="utility:copy" label="CLONE" onclick={cloneHandler} variant="brand"
+                class="slds-var-m-left_xx-small slds-float_right"></lightning-button> -->
+        </div>
+    </lightning-card>
+
+
+</template>

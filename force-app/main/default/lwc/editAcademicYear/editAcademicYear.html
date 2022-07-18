@@ -1,0 +1,117 @@
+<template>
+    <template if:true={isShowModal}>
+
+        <!-- <lightning-record-edit-form record-id={recordId} object-api-name="Academic_Year__c" onsuccess={handleSuccess}> -->
+
+            <!--
+            I Used SLDS for this code
+            Here is link https://www.lightningdesignsystem.com/components/modals/
+        -->
+
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-modal_medium slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- modal header start -->
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                            title="Close" onclick={closeModal}>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                                size="small"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+
+                        <!-- Edit form code -->
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                            Update Academic Year Information
+                        </h2>
+                    </header>
+
+                    <!-- modal body start -->
+                    <!-- <div class="slds-modal__content " id="modal-content-id-1">
+        <lightning-record-edit-form record-id={recordsId} object-api-name="Academic_Year__c" onsuccess={handleSuccess}>
+    
+            <lightning-messages></lightning-messages>
+                <br>
+                <lightning-layout multiple-rows="true">
+    
+                    <lightning-layout-item size="6" class="slds-p-around_xx-small">
+        
+                        <lightning-input-field field-name="From_Month__c"> </lightning-input-field>
+        
+                    </lightning-layout-item>
+        
+                    <lightning-layout-item size="6" class="slds-p-around_xx-small">
+        
+                        <lightning-input-field field-name="From_Year__c"> </lightning-input-field>
+        
+                    </lightning-layout-item>
+        
+      
+    
+                    <lightning-layout-item size="6" class="slds-p-around_xx-small">
+        
+                        <lightning-input-field field-name="To_Month__c"> </lightning-input-field>
+        
+                    </lightning-layout-item>
+        
+                    <lightning-layout-item size="6" class="slds-p-around_xx-small">
+        
+                        <lightning-input-field field-name="To_Year__c"> </lightning-input-field>
+        
+                    </lightning-layout-item>
+        
+                </lightning-layout>
+    
+    
+            <footer class="slds-modal__footer">
+    
+                <div slot="footer" class="slds-clearfix slds-p-top_xxx-small ">
+    
+               <lightning-button label="Cancel" onclick={closeModal}
+    
+                        class="slds-var-m-left_xx-small slds-float_right"></lightning-button>
+    
+                    <lightning-button  type="submit" name="update" variant="brand" label="Update"
+    
+                        class="slds-var-m-left_xx-small slds-float_right"></lightning-button>
+    
+                </div>
+    
+            </footer>
+    
+        </lightning-record-edit-form>
+      </div> -->
+
+                    <!-- modal footer start-->
+                    <!-- <footer class="slds-modal__footer">
+         <button class="slds-button slds-button_neutral" onclick={hideModalBox}>Cancel</button>
+      </footer> -->
+
+
+                    <lightning-card>
+                        <lightning-layout size="12" class="slds-p-around_medium">
+                            <lightning-layout-item size="6" class="slds-p-around_small slds-p-top_none">
+                                <lightning-input value={fromValue} type="month" label="From" name="fromDate" required
+                                    size="6" onchange={handleInput}></lightning-input>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="6" class="slds-p-around_small slds-p-top_none">
+                                <lightning-input value={toValue} type="month" label="To" name="toDate" required size="6"
+                                    onchange={handleInput}></lightning-input>
+                            </lightning-layout-item>
+                        </lightning-layout>
+
+                        <div slot="footer" class="slds-clearfix ">
+                            <lightning-button label="Cancel" onclick={closeModal}
+                                class="slds-p-around_x-small slds-float_right"></lightning-button>
+
+                            <lightning-button onclick={updateRecord} type="submit" name="update" variant="brand" label="Update"
+                                class="slds-p-around_x-small slds-float_right"></lightning-button>
+                        </div>
+                    </lightning-card>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+
+        <!-- </lightning-record-edit-form> -->
+    </template>
+</template>
